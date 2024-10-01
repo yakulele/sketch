@@ -1,0 +1,17 @@
+def max_defense():
+    N, M, A, B = map(int, input().split())
+    A -= 1
+    B -= 1
+    grid = [list(map(int, input().split())) for _ in range(N)]
+    max_defense_value = 0
+
+    for p in range(A + 1):
+        for q in range(B + 1): 
+            for r in range(A, N):
+                for s in range(B, M):
+                    l = 2 * (r - p + s - q) + 4
+                    defense_value = grid[p][q] + grid[r][s] + l
+                    max_defense_value = max(max_defense_value, defense_value)
+    return(max_defense_value)
+
+print(max_defense())
